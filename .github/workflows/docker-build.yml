@@ -36,6 +36,8 @@ jobs:
           tags: ghcr.io/${{ env.REPO_LOWER }}:latest
 
       - name: Trigger Azure Web App deployment webhook
+        env:
+          WEBHOOK_URL: ${{ secrets.AZURE_WEBHOOK_URL }}
         run: |
           echo "Triggering Azure deployment..."
-          curl -i -X POST "${{ secrets.AZURE_WEBHOOK_URL }}"
+          curl -i -X POST "$WEBHOOK_URL"
