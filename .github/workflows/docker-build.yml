@@ -37,4 +37,5 @@ jobs:
 
       - name: Trigger Azure Web App deployment webhook
         run: |
-          curl -X POST "${{ secrets.AZURE_WEBHOOK_URL }}"
+          echo "Triggering Azure deployment..."
+          curl -i -X POST "${{ secrets.AZURE_WEBHOOK_URL }}"
